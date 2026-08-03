@@ -1,22 +1,29 @@
 class Solution {
 
+    public int fun(int n , int dp[]){
 
-    public int fib(int n) {
-        HashMap<Integer , Integer> hm = new HashMap<>();
-        
-        if(n==0 || n==1){
+        if(n ==0 || n==1){
             return n;
         }
 
-        if(!hm.containsKey(n)){
-            hm.put(n , 1);
+        if(dp[n] != -1){
+            return dp[n];
         }
 
-        int s1 = fib(n-1);
-        int s2 = fib(n-2);
-        int ans = s1+s2;
-        hm.put(ans ,1);
-        return ans;
+        int ans1 = fun(n-1 , dp);
+        int ans2 = fun(n-2 , dp);
 
+        return dp[n] = ans1 + ans2;
+    }
+    public int fib(int n) {
+
+        int []dp = new int[n+1];
+
+        for(int i=0; i<dp.length; i++){
+            dp[i] = -1;
+        }
+
+        return fun(n , dp);
+        
     }
 }
