@@ -1,7 +1,7 @@
 class Solution {
     public int[] sortedSquares(int[] nums) {
 
-       
+       // step1 check the length of negative and postive part or array
         int negativelength =0;
         int positivelength = 0; 
         
@@ -14,6 +14,8 @@ class Solution {
                positivelength++;
             }
         }
+
+        //step 2 spilt the nums array into pos and neg part
         int a[] = new int[negativelength];  // negative no is st
         int b[] = new int[positivelength];  // positive no is store
         int indx1 =0;
@@ -29,6 +31,9 @@ class Solution {
         }
 
        }
+
+       // step3 special cases if no negative value square it only and if negative value is present then 
+       //square it and sort in ascending order
        if(a.length == 0){   // no negative value in nums array
            for(int i=0; i<nums.length; i++){
              nums[i] = nums[i] * nums[i];
@@ -41,6 +46,7 @@ class Solution {
         }
         int left =0;
         int right = nums.length-1;
+        // array having both value positive and negative
         while(left < right){
             int temp = nums[left];
             nums[left] = nums[right];
@@ -51,6 +57,8 @@ class Solution {
         return nums;
 
        }
+
+       // step4 sqauring and ascending order of negative value
        for(int i=0; i<a.length; i++){
         a[i] = a[i] * a[i];
        }
@@ -66,7 +74,9 @@ class Solution {
        for(int i=0; i<b.length; i++){
         b[i] = b[i] * b[i];
        }
-
+   
+    
+    // step5 merg to sorting array
 
         int i=0; 
         int j=0; 
