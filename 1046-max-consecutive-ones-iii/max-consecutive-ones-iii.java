@@ -4,7 +4,7 @@ class Solution {
 
         int low =0;
         int zeros = 0;
-        int maxlen = 0;
+        int maxlen = Integer.MIN_VALUE;
        
         int n = nums.length;
 
@@ -21,8 +21,12 @@ class Solution {
             low++;
           
            }
-             int length = high -low +1;
-            maxlen = Math.max(maxlen , length);
+            if(zeros <k || zeros ==k){
+               int length = high - low +1;
+                maxlen = Math.max(maxlen , length);
+
+
+            }
             
         }
      return maxlen;
